@@ -4401,6 +4401,13 @@ table {
   width: 100%;
 }
 
+.time-tab {
+  width: 85%;
+  margin-left: 8%;
+  margin-bottom: 7%;
+
+}
+
 td,
 th {
   border: 1px solid #dddddd;
