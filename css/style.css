@@ -4441,3 +4441,62 @@ tr:nth-child(odd) {
     order: 3;
   }
 }
+
+
+/* CSS for Tabs in services page  */
+/* .tab-content>.active {
+  display: block;
+}
+
+.tab-content>.tab-pane {
+  display: none;
+} */
+
+
+.dep-icons-wrapper {
+  margin: 22px auto 0;
+}
+
+.dep-itm-each-icons {
+  transition: all 1.3s ease-in-out;
+  color: #333;
+}
+.dep-itm-each-icons {
+  border: 0;
+  box-sizing: border-box;
+  padding: 13px 10px;
+  float: left;
+  width: 80%;
+  text-align: center;
+  background: #042b57;
+  border-radius: 18px;
+  box-shadow: 0 0 17px 3px #3333331a;
+  margin: 16px auto;
+  margin-left: 12%;
+  transition: all .3s ease;
+  height: 210px;
+}
+
+.dep-itm-each-icons:hover {
+  background-color: #0056b3;
+  transform: scale(1.1); 
+}
+
+
+.tab-text{
+  font-size: 23px;
+  padding-top: 6%;
+}
+
+.img-tab {
+  padding-top: 5%;
+}
+
+.row-tab {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-left: -15px;
+}
