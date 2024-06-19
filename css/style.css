@@ -10,6 +10,7 @@
   --purple: #6f42c1;
   --pink: #e83e8c;
   --red: #F80D02;
+  --dark-blue: #0d1128;
   --orange: #fd7e14;
   --yellow: #ffc107;
   --green: #28a745;
@@ -893,6 +894,7 @@ fieldset:disabled a.btn {
 .dropdown,
 .dropleft {
   position: relative;
+  padding-left: 5%;
 }
 
 .dropdown-toggle {
@@ -1039,7 +1041,7 @@ fieldset:disabled a.btn {
   padding: 0.25rem 1.5rem;
   clear: both;
   font-weight: 400;
-  color: #212529;
+  color: var(--white);
   text-align: inherit;
   white-space: nowrap;
   background-color: transparent;
@@ -1050,7 +1052,7 @@ fieldset:disabled a.btn {
 .dropdown-item:focus {
   color: #16181b;
   text-decoration: none;
-  background-color: #f8f9fa;
+  background-color: #0080ff;
 }
 
 .dropdown-item.active,
@@ -1069,6 +1071,7 @@ fieldset:disabled a.btn {
 
 .dropdown-menu.show {
   display: block;
+  background-color: #0056b3;
 }
 
 .nav {
@@ -2465,7 +2468,7 @@ h5,
 
 .ftco-navbar-light .navbar-nav>.nav-item .dropdown-menu {
   border: none;
-  background: #fff;
+  background: var(--dark-blue);
   -webkit-box-shadow: 0px 10px 34px -20px rgba(0, 0, 0, 0.41);
   -moz-box-shadow: 0px 10px 34px -20px rgba(0, 0, 0, 0.41);
   box-shadow: 0px 10px 34px -20px rgba(0, 0, 0, 0.41);
@@ -2475,7 +2478,10 @@ h5,
   font-size: 14px;
 }
 
-.ftco-navbar-light .navbar-nav>.nav-item .dropdown-menu .dropdown-item:hover,
+.ftco-navbar-light .navbar-nav>.nav-item .dropdown-menu:hover .dropdown-item:hover {
+  background-color: var(--white);
+}
+
 .ftco-navbar-light .navbar-nav>.nav-item .dropdown-menu .dropdown-item:focus {
   background: transparent;
   color: #000000;
@@ -4512,3 +4518,5 @@ tr:nth-child(odd) {
   padding-top: 2%;
   background-color: #fff;
 }
+
+/* Submenu in Navbar */
