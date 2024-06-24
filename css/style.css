@@ -3278,7 +3278,7 @@ h5,
 
 .blog-entry .meta-date {
   display: inline-block;
-  background: #5d50c6;
+  background: var(--dark-blue);
 }
 
 .blog-entry .meta-date span {
@@ -4402,7 +4402,7 @@ textarea.form-control {
 
 /* CSS For Table used in Blog Detail Page */
 table {
-  font-family: Poppins,arial, sans-serif;
+  font-family: Poppins, arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
 }
@@ -4467,6 +4467,7 @@ tr:nth-child(odd) {
   transition: all 1.3s ease-in-out;
   color: #333;
 }
+
 .dep-itm-each-icons {
   border: 0;
   box-sizing: border-box;
@@ -4485,11 +4486,11 @@ tr:nth-child(odd) {
 
 .dep-itm-each-icons:hover {
   background-color: #0056b3;
-  transform: scale(1.1); 
+  transform: scale(1.1);
 }
 
 
-.tab-text{
+.tab-text {
   font-size: 20px;
   padding-top: 6%;
   color: white;
