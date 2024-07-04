@@ -4521,3 +4521,8 @@ tr:nth-child(odd) {
 }
 
 /* Submenu in Navbar */
+
+
+/* Read more Text in Blog Page */
+#more {display: none;}
+
