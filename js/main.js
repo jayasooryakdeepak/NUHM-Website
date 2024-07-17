@@ -260,18 +260,47 @@
 
 })(jQuery);
 
-function myFunction() {
-	var dots = document.getElementById("dots");
-	var moreText = document.getElementById("more");
-	var btnText = document.getElementById("myBtn");
+// function myFunction() {
+// 	var dots = document.getElementById("dots");
+// 	var moreText = document.getElementById("more");
+// 	var btnText = document.getElementById("myBtn");
   
+// 	if (dots.style.display === "none") {
+// 	  dots.style.display = "inline";
+// 	  btnText.innerHTML = "Read more";
+// 	  moreText.style.display = "none";
+// 	} else {
+// 	  dots.style.display = "none";
+// 	  btnText.innerHTML = "Read less";
+// 	  moreText.style.display = "inline";
+// 	}
+//   }
+
+function toggleReadMore(button) {
+	var dots = button.previousElementSibling; // Get the "..." element
+	var moreText = button.nextElementSibling; // Get the hidden text
+	
 	if (dots.style.display === "none") {
 	  dots.style.display = "inline";
-	  btnText.innerHTML = "Read more";
+	  button.innerHTML = "Read more";
 	  moreText.style.display = "none";
 	} else {
 	  dots.style.display = "none";
-	  btnText.innerHTML = "Read less";
+	  button.innerHTML = "Read less";
 	  moreText.style.display = "inline";
 	}
   }
+  
+  // Add this event listener to your main.js file
+  document.addEventListener('DOMContentLoaded', function() {
+	// Select all "Read More" buttons
+	var readMoreButtons = document.querySelectorAll('.read-more-btn');
+  
+	// Add an event listener to each button
+	readMoreButtons.forEach(function(button) {
+	  button.addEventListener('click', function() {
+		toggleReadMore(this);
+	  });
+	});
+  });
+  

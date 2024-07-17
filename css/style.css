@@ -4524,5 +4524,5 @@ tr:nth-child(odd) {
 
 
 /* Read more Text in Blog Page */
-#more {display: none;}
+.more {display: none;}
 
