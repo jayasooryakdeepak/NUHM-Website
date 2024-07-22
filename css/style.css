@@ -4541,6 +4541,59 @@ tr:nth-child(odd) {
 /* Submenu in Navbar */
 
 
-/* Read more Text in Blog Page */
-.more {display: none;}
 
+/* Gallery in Blog-detail Page */
+
+.wrapper-gal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.media-gal {
+  max-width: 300px;
+  max-height: 200px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.media-gal img {
+  max-width: 100%;
+  height: auto;
+}
+
+.layer-gal {
+  opacity: 0;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10px;
+  height: 90%;
+  background: #fff;
+  color: #151e3f;
+  transition: all 0.9s ease;
+  p {
+    transition: all 0.9s ease;
+    transform: scale(0.1);
+  }
+}
+
+
+.media-gal:hover .layer-gal {
+  opacity: 0.8;
+  width: 90%;
+  transition: all 0.5s ease;
+  p {
+    transform: scale(1);
+    transition: all 0.9s ease;
+  }
+}
+
+/* Gallery end */
