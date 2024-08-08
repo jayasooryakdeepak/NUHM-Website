@@ -32,12 +32,12 @@ $query= "SELECT * FROM User_Credentials where user_name='$user_name' AND pwd='$p
     if($row['user_type'] == 'Admin')
     {
       
-      // $_SESSION['loggedin'] = true;
-      // $_SESSION['username'] = $user_name; 
-      // $_SESSION['admin_id'] = $row['id'];
-      // $row = mysqli_fetch_array($res_array);
+      $_SESSION['loggedin'] = true;
+      $_SESSION['username'] = $user_name; 
+      $_SESSION['admin_id'] = $row['id'];
+      $row = mysqli_fetch_array($res_array);
       
-      header("Location:../courses.html");
+      header("Location:../admin/admin_page.php");
     }
     elseif ($row['user_type'] == 'Customer') {
       $_SESSION['loggedin'] = true;
