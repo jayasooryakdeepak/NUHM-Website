@@ -1,22 +1,11 @@
 <?php
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "Artec_Computers";
-
-global $user_name;
-global $pwd;
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-session_start();
+include('../mysql_conn.php');
 
 $admin_id = $_SESSION['admin_id'];
 
 if(!isset($admin_id)){
-   header('location:login.html');
+   header('location:../login/login.html');
 };
 
 if(isset($_POST['add_product'])){
@@ -69,7 +58,7 @@ if(isset($_GET['delete'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>products</title>
+   <title>Add Institutions</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -85,7 +74,7 @@ if(isset($_GET['delete'])){
 <section class="add-products">
 
 <form action="addprod_action.php" method="POST" enctype="multipart/form-data">
-           <h3><u>ADD PRODUCT</h3></u>
+           <h3><u>ADD INSTITUTUIONS</h3></u>
         
       <input type ="text" class="box" placeholder="product code" name="pcode"><br><br>
 
@@ -147,19 +136,24 @@ if(isset($_GET['delete'])){
    
 
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
 <script src="js/admin_script.js"></script>
 
 </body>
 </html>
+
+<!-- 
+Inst Code
+Inst Name
+Address Line 1
+Address Line 2
+Address Line 3
+Pincode
+Contact no
+Email
+Timing
+Location
+Map
+Main Img
+Category
+-->
+
