@@ -16,7 +16,7 @@ if(isset($_POST['add_product'])){
    $image = $_FILES['image']['name'];
    $image_size = $_FILES['image']['size'];
    $image_tmp_name = $_FILES['image']['tmp_name'];
-   $image_folter = 'uploaded_img/'.$image;
+   $image_folter = 'uploads/institutions/'.$image;
 
    $select_product_name = mysqli_query($conn, "SELECT name FROM `products` WHERE name = '$name'") or die('query failed');
 
@@ -142,18 +142,26 @@ if(isset($_GET['delete'])){
 </html>
 
 <!-- 
-Inst Code
-Inst Name
+Institutions Table
+
+Institution Code
+Institution Name
+Place
+Category
+
+Institutions Details Table
+Institution Code
+About
 Address Line 1
 Address Line 2
 Address Line 3
 Pincode
-Contact no
+Phone
 Email
-Timing
+Opening Time
+Closing Time                  
 Location
 Map
 Main Img
-Category
 -->
 
