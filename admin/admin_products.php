@@ -73,16 +73,15 @@ if (isset($_GET['delete'])) {
 
    <section class="add-products">
 
-      <form action="addprod_action.php" method="POST" enctype="multipart/form-data">
+      <form action="add_inst_action.php" method="POST" enctype="multipart/form-data">
          <h3><u>ADD INSTITUTIONS</h3></u>
 
-         <input type="text" class="box" placeholder="Institution Name" name="inst_name" required>
-         <br><br>
+         <input type="text" class="box" placeholder="Institution Name" name="inst_name" required><br><br>
 
          <input type="text" class="box" placeholder="Place" name="place" required><br><br>
 
          <h2><u>CATEGORY</h2></u>
-         <select name="cars" id="cars" class="box" placeholder="Category">
+         <select name="category" class="box" placeholder="Category">
             <option value="UPHC">UPHC</option>
             <option value="UCHC">UCHC</option>
             <option value="UHWC">UHWC</option>
@@ -105,12 +104,10 @@ if (isset($_GET['delete'])) {
          <input type="time" class="box" placeholder="Opening Time" name="opentime" value="09:00" required><br><br>
 
          <input type="time" class="box" placeholder="Closing Time" name="closetime" value="17:00" required><br><br>
-         
+
          <input type="text" class="box" placeholder="Location" name="location" required><br><br>
 
-         <input type="file" class="box" name="file" id="file" required><br><br>
-
-         <br><br>
+         <input type="file" class="box" name="file" id="file" required><br><br><br><br>
 
          <input type="submit" value="submit" id="submit" class="btn" name="submit">
          <br><br>
