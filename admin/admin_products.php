@@ -4,11 +4,11 @@ include('../mysql_conn.php');
 
 $admin_id = $_SESSION['admin_id'];
 
-if(!isset($admin_id)){
+if (!isset($admin_id)) {
    header('location:../login/login.html');
 };
 
-if(isset($_POST['add_product'])){
+if (isset($_POST['add_product'])) {
 
    $name = mysqli_real_escape_string($conn, $_POST['name']);
    $price = mysqli_real_escape_string($conn, $_POST['price']);
@@ -16,44 +16,43 @@ if(isset($_POST['add_product'])){
    $image = $_FILES['image']['name'];
    $image_size = $_FILES['image']['size'];
    $image_tmp_name = $_FILES['image']['tmp_name'];
-   $image_folter = 'uploads/institutions/'.$image;
+   $image_folter = 'uploads/institutions/' . $image;
 
    $select_product_name = mysqli_query($conn, "SELECT name FROM `products` WHERE name = '$name'") or die('query failed');
 
-   if(mysqli_num_rows($select_product_name) > 0){
+   if (mysqli_num_rows($select_product_name) > 0) {
       $message[] = 'product name already exist!';
-   }else{
+   } else {
       $insert_product = mysqli_query($conn, "INSERT INTO `products`(name, details, price, image) VALUES('$name', '$details', '$price', '$image')") or die('query failed');
 
-      if($insert_product){
-         if($image_size > 2000000){
+      if ($insert_product) {
+         if ($image_size > 2000000) {
             $message[] = 'image size is too large!';
-         }else{
+         } else {
             move_uploaded_file($image_tmp_name, $image_folter);
             $message[] = 'product added successfully!';
          }
       }
    }
-
 }
 
-if(isset($_GET['delete'])){
+if (isset($_GET['delete'])) {
 
    $delete_id = $_GET['delete'];
    $select_delete_image = mysqli_query($conn, "SELECT image FROM `products` WHERE id = '$delete_id'") or die('query failed');
    $fetch_delete_image = mysqli_fetch_assoc($select_delete_image);
-   unlink('uploaded_img/'.$fetch_delete_image['image']);
+   unlink('uploaded_img/' . $fetch_delete_image['image']);
    mysqli_query($conn, "DELETE FROM `products` WHERE id = '$delete_id'") or die('query failed');
    mysqli_query($conn, "DELETE FROM `wishlist` WHERE pid = '$delete_id'") or die('query failed');
    mysqli_query($conn, "DELETE FROM `cart` WHERE pid = '$delete_id'") or die('query failed');
    header('location:admin_products.php');
-
 }
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -67,37 +66,58 @@ if(isset($_GET['delete'])){
    <link rel="stylesheet" href="css/admin_style.css">
 
 </head>
+
 <body>
-   
-<?php @include 'admin_header.php'; ?>
 
-<section class="add-products">
+   <?php @include 'admin_header.php'; ?>
 
-<form action="addprod_action.php" method="POST" enctype="multipart/form-data">
-           <h3><u>ADD INSTITUTUIONS</h3></u>
-        
-      <input type ="text" class="box" placeholder="product code" name="pcode"><br><br>
+   <section class="add-products">
 
- 
-    <input type ="text" class="box" placeholder="product name" name="pname" required>
-        <br><br>
-          <input type ="text" class="box" placeholder="unit price" name="uprice" required><br><br>
+      <form action="addprod_action.php" method="POST" enctype="multipart/form-data">
+         <h3><u>ADD INSTITUTIONS</h3></u>
 
-          <input type ="text" class="box" placeholder="selling price" name="sprice" required><br><br>
+         <input type="text" class="box" placeholder="Institution Name" name="inst_name" required>
+         <br><br>
 
-          <input type ="text" class="box" placeholder="Quantity" name="quant" required><br><br>
-    
-         <input type ="file"  class="box" name="file" id="file" required><br><br>
+         <input type="text" class="box" placeholder="Place" name="place" required><br><br>
 
-         <textarea id="descp" class="box" placeholder="enter a short description" name="descp" rows="7" cols="30">
-</textarea><br><br>
-        
-         <input type="submit" value="submit" id="submit" class="btn" name="submit" >
-       <br><br>
+         <h2><u>CATEGORY</h2></u>
+         <select name="cars" id="cars" class="box" placeholder="Category">
+            <option value="UPHC">UPHC</option>
+            <option value="UCHC">UCHC</option>
+            <option value="UHWC">UHWC</option>
+         </select>
 
-</form>
+         <textarea id="about" class="box" placeholder="About" name="about" rows="7" cols="30"></textarea>
 
-<!-- 
+         <input type="text" class="box" placeholder="Address Line 1" name="address1" required><br><br>
+
+         <input type="text" class="box" placeholder="Address Line 2" name="address2" required><br><br>
+
+         <input type="text" class="box" placeholder="Address Line 3" name="address3" required><br><br>
+
+         <input type="number" class="box" placeholder="Pincode" name="pincode" required><br><br>
+
+         <input type="number" class="box" placeholder="Phone" name="phone" required><br><br>
+
+         <input type="email" class="box" placeholder="Email" name="email" required><br><br>
+
+         <input type="time" class="box" placeholder="Opening Time" name="opentime" value="09:00" required><br><br>
+
+         <input type="time" class="box" placeholder="Closing Time" name="closetime" value="17:00" required><br><br>
+         
+         <input type="text" class="box" placeholder="Location" name="location" required><br><br>
+
+         <input type="file" class="box" name="file" id="file" required><br><br>
+
+         <br><br>
+
+         <input type="submit" value="submit" id="submit" class="btn" name="submit">
+         <br><br>
+
+      </form>
+
+      <!-- 
    <form action="" method="POST" enctype="multipart/form-data">
       <h3>Add New Product</h3>
       <input type="text" class="box" required placeholder="enter product name" name="name">
@@ -107,38 +127,39 @@ if(isset($_GET['delete'])){
       <input type="submit" value="add product" name="add_product" class="btn">
    </form> -->
 
-</section>
+   </section>
 
-<section class="show-products">
+   <section class="show-products">
 
-   <div class="box-container">
+      <div class="box-container">
 
-      <?php
+         <?php
          $select_products = mysqli_query($conn, "SELECT * FROM `Product_Details`") or die('query failed');
-         if(mysqli_num_rows($select_products) > 0){
-            while($fetch_products = mysqli_fetch_assoc($select_products)){
-      ?>
-      <div class="box">
-         <div class="price">₹<?php echo $fetch_products['sellingprice']; ?>/-</div>
-         <img class="img-responsive" src="<?php echo $fetch_products['filename']; ?>" alt="">
-         <div class="name"><?php echo $fetch_products['productname']; ?></div>
-         <div class="details"><?php echo $fetch_products['description']; ?></div>
-         <!-- <a href="admin_update_product.php?update=<?php echo $fetch_products['id']; ?>" class="option-btn">update</a>
+         if (mysqli_num_rows($select_products) > 0) {
+            while ($fetch_products = mysqli_fetch_assoc($select_products)) {
+         ?>
+               <div class="box">
+                  <div class="price">₹<?php echo $fetch_products['sellingprice']; ?>/-</div>
+                  <img class="img-responsive" src="<?php echo $fetch_products['filename']; ?>" alt="">
+                  <div class="name"><?php echo $fetch_products['productname']; ?></div>
+                  <div class="details"><?php echo $fetch_products['description']; ?></div>
+                  <!-- <a href="admin_update_product.php?update=<?php echo $fetch_products['id']; ?>" class="option-btn">update</a>
          <a href="admin_products.php?delete=<?php echo $fetch_products['id']; ?>" class="delete-btn" onclick="return confirm('delete this product?');">delete</a> -->
-      </div>
-      <?php
+               </div>
+         <?php
+            }
+         } else {
+            echo '<p class="empty">no products added yet!</p>';
          }
-      }else{
-         echo '<p class="empty">no products added yet!</p>';
-      }
-      ?>
-   </div>
-   
+         ?>
+      </div>
 
-</section>
-<script src="js/admin_script.js"></script>
+
+   </section>
+   <script src="js/admin_script.js"></script>
 
 </body>
+
 </html>
 
 <!-- 
@@ -164,4 +185,3 @@ Location
 Map
 Main Img
 -->
-
