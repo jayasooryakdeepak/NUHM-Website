@@ -131,19 +131,25 @@ if (isset($_GET['delete'])) {
       <div class="box-container">
 
          <?php
-         $select_products = mysqli_query($conn, "SELECT * FROM `Product_Details`") or die('query failed');
-         if (mysqli_num_rows($select_products) > 0) {
-            while ($fetch_products = mysqli_fetch_assoc($select_products)) {
+         $select_institution = mysqli_query($conn, "SELECT * FROM Institutions_Table,Institutions_Details_Table WHERE 
+         Institutions_Table.Institution_Code = Institutions_Details_Table.Institution_Code") or die('query failed');
+         // $select_institution2 = mysqli_query($conn, "SELECT * FROM `Institutions_Details_Table`") or die('query failed');
+         if (mysqli_num_rows($select_institution) > 0) {
+            while ($fetch_inst = mysqli_fetch_assoc($select_institution)) {
+               // while ($fetch_inst = mysqli_fetch_assoc($select_institution2)) {
          ?>
-               <div class="box">
-                  <div class="price">₹<?php echo $fetch_products['sellingprice']; ?>/-</div>
-                  <img class="img-responsive" src="<?php echo $fetch_products['filename']; ?>" alt="">
-                  <div class="name"><?php echo $fetch_products['productname']; ?></div>
-                  <div class="details"><?php echo $fetch_products['description']; ?></div>
-                  <!-- <a href="admin_update_product.php?update=<?php echo $fetch_products['id']; ?>" class="option-btn">update</a>
-         <a href="admin_products.php?delete=<?php echo $fetch_products['id']; ?>" class="delete-btn" onclick="return confirm('delete this product?');">delete</a> -->
-               </div>
+                  <div class="box">
+                     <div class="name"><?php echo $fetch_inst['Category']; ?></div>
+                     <div class="price"><?php echo $fetch_inst['Institution_Code']; ?></div>
+                     <img class="img-responsive" src="<?php echo $fetch_inst['Main_Img']; ?>" alt="" style="width: 100%; height: auto">
+                     <div class="name"><?php echo $fetch_inst['Institution_Name']; ?></div>
+                     <div class="name"><?php echo $fetch_inst['Place']; ?></div>
+
+                     <!-- <a href="admin_update_product.php?update=<?php echo $fetch_inst['id']; ?>" class="option-btn">update</a>
+         <a href="admin_products.php?delete=<?php echo $fetch_inst['id']; ?>" class="delete-btn" onclick="return confirm('delete this product?');">delete</a> -->
+                  </div>
          <?php
+               // }
             }
          } else {
             echo '<p class="empty">no products added yet!</p>';
