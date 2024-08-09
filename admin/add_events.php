@@ -166,6 +166,9 @@ if (isset($_GET['delete'])) {
 </html>
 
 <!-- 
+Table Structures
+
+
 Institutions Table
 
 Institution Code
@@ -173,7 +176,10 @@ Institution Name
 Place
 Category
 
+
+
 Institutions Details Table
+
 Institution Code
 About
 Address Line 1
@@ -187,4 +193,18 @@ Closing Time
 Location
 Map
 Main Img
+
+
+
+Events Page
+
+
+Event_Code
+Institution_Code
+Event_Name
+Event_Desc
+Date
+Event_Image
+
+
 -->
