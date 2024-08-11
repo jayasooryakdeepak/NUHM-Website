@@ -310,7 +310,7 @@ section{
    display: grid;
    grid-template-columns: repeat(auto-fit, 30rem);
    justify-content: center;
-   gap:1.5rem;
+   gap:8.5rem;
    max-width: 1200px;
    margin:0 auto;
    align-items: flex-start;
@@ -322,11 +322,12 @@ section{
 
 .show-products .box-container .box{
    text-align: center;
+   width: fit-content;
    padding:2rem;
    border-radius: .5rem;
    border:var(--border);
    box-shadow: var(--box-shadow);
-   background-color: var(--white);
+   background-color: var(--white);  
 }
 
 .show-products .box-container .box img{
