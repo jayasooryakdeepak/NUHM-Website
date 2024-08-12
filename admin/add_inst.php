@@ -153,9 +153,10 @@ if (isset($_GET['delete'])) {
                      $cltime =$fetch_inst['Closing_Time'];
                      $new_OP_Time_2 = date('h:i A', strtotime($cltime));
                      ?>
-                     <div class="name"><?php echo $new_OP_Time_1 ?></div>
-                     <div class="name"><?php echo $new_OP_Time_2 ?></div>
-
+                     <div class="name"><?php 
+                     echo $new_OP_Time_1;  
+                     echo "-";
+                     echo $new_OP_Time_2 ?></div>
 
                      <!-- <a href="admin_update_product.php?update=<?php echo $fetch_inst['id']; ?>" class="option-btn">update</a>
          <a href="admin_products.php?delete=<?php echo $fetch_inst['id']; ?>" class="delete-btn" onclick="return confirm('delete this product?');">delete</a> -->
