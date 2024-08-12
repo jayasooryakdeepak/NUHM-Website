@@ -144,6 +144,19 @@ if (isset($_GET['delete'])) {
                      <img class="img-responsive" src="<?php echo $fetch_inst['Main_Img']; ?>" alt="" style="width: 100%; height: auto">
                      <div class="name"><?php echo $fetch_inst['Institution_Name']; ?></div>
                      <div class="name"><?php echo $fetch_inst['Place']; ?></div>
+                     <div class="name"><?php echo $fetch_inst['Phone']; ?></div>
+                     <div class="name"><?php echo $fetch_inst['Email']; ?></div>
+                     <?php
+                     //Converting TimeStamp to AM/PM
+                     $optime =$fetch_inst['Opening_Time'];
+                     $new_OP_Time_1 = date('h:i A', strtotime($optime));
+                     $cltime =$fetch_inst['Closing_Time'];
+                     $new_OP_Time_2 = date('h:i A', strtotime($cltime));
+                     ?>
+                     <div class="name"><?php 
+                     echo $new_OP_Time_1;  
+                     echo "-";
+                     echo $new_OP_Time_2 ?></div>
 
                      <!-- <a href="admin_update_product.php?update=<?php echo $fetch_inst['id']; ?>" class="option-btn">update</a>
          <a href="admin_products.php?delete=<?php echo $fetch_inst['id']; ?>" class="delete-btn" onclick="return confirm('delete this product?');">delete</a> -->
@@ -166,6 +179,9 @@ if (isset($_GET['delete'])) {
 </html>
 
 <!-- 
+Table Structures
+
+
 Institutions Table
 
 Institution Code
@@ -173,7 +189,10 @@ Institution Name
 Place
 Category
 
+
+
 Institutions Details Table
+
 Institution Code
 About
 Address Line 1
@@ -187,4 +206,18 @@ Closing Time
 Location
 Map
 Main Img
+
+
+
+Events Page
+
+
+Event_Code
+Institution_Code
+Event_Name
+Event_Desc
+Date
+Event_Image
+
+
 -->
