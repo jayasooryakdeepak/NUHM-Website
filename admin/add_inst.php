@@ -138,29 +138,41 @@ if (isset($_GET['delete'])) {
             while ($fetch_inst = mysqli_fetch_assoc($select_institution)) {
                // while ($fetch_inst = mysqli_fetch_assoc($select_institution2)) {
          ?>
-                  <div class="box">
-                     <div class="name"><?php echo $fetch_inst['Category']; ?></div>
-                     <div class="price"><?php echo $fetch_inst['Institution_Code']; ?></div>
-                     <img class="img-responsive" src="<?php echo $fetch_inst['Main_Img']; ?>" alt="" style="width: 100%; height: auto">
-                     <div class="name"><?php echo $fetch_inst['Institution_Name']; ?></div>
-                     <div class="name"><?php echo $fetch_inst['Place']; ?></div>
-                     <div class="name"><?php echo $fetch_inst['Phone']; ?></div>
-                     <div class="name"><?php echo $fetch_inst['Email']; ?></div>
-                     <?php
-                     //Converting TimeStamp to AM/PM
-                     $optime =$fetch_inst['Opening_Time'];
-                     $new_OP_Time_1 = date('h:i A', strtotime($optime));
-                     $cltime =$fetch_inst['Closing_Time'];
-                     $new_OP_Time_2 = date('h:i A', strtotime($cltime));
-                     ?>
-                     <div class="name"><?php 
-                     echo $new_OP_Time_1;  
-                     echo "-";
-                     echo $new_OP_Time_2 ?></div>
+               <div class="box">
+                  <div class="name"><?php echo $fetch_inst['Category']; ?></div>
+                  <div class="price"><?php echo $fetch_inst['Institution_Code']; ?></div>
+                  <img class="img-responsive" src="<?php echo $fetch_inst['Main_Img']; ?>" alt="" style="width: 100%; height: auto">
+                  <!-- <iframe
+                     src="<?php //echo $fetch_inst['Location']; 
+                           ?>"
+                     width="300"
+                     height="250"
+                     style="border: 0"
+                     allowfullscreen=""
+                     loading="lazy"
+                     referrerpolicy="no-referrer-when-downgrade"></iframe> -->
 
-                     <!-- <a href="admin_update_product.php?update=<?php echo $fetch_inst['id']; ?>" class="option-btn">update</a>
-         <a href="admin_products.php?delete=<?php echo $fetch_inst['id']; ?>" class="delete-btn" onclick="return confirm('delete this product?');">delete</a> -->
+                  <div class="name"><?php echo $fetch_inst['Institution_Name']; ?></div>
+                  <div class="name"><?php echo $fetch_inst['Place']; ?></div>
+                  <div class="name"><?php echo $fetch_inst['Phone']; ?></div>
+                  <div class="name"><?php echo $fetch_inst['Email']; ?></div>
+                  <?php
+                  //Converting TimeStamp to AM/PM
+                  $optime = $fetch_inst['Opening_Time'];
+                  $new_OP_Time_1 = date('h:i A', strtotime($optime));
+                  $cltime = $fetch_inst['Closing_Time'];
+                  $new_OP_Time_2 = date('h:i A', strtotime($cltime));
+                  ?>
+                  <div class="name">
+                     <?php
+                     echo $new_OP_Time_1;
+                     echo "-";
+                     echo $new_OP_Time_2 ?>
                   </div>
+
+                  <!-- <a href="admin_update_product.php?update=<?php echo $fetch_inst['id']; ?>" class="option-btn">update</a>
+         <a href="admin_products.php?delete=<?php echo $fetch_inst['id']; ?>" class="delete-btn" onclick="return confirm('delete this product?');">delete</a> -->
+               </div>
          <?php
                // }
             }

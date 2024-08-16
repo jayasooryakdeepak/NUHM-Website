@@ -15,7 +15,14 @@ $phone = $_POST['phone'];
 $email = $_POST['email'];
 $opentime = $_POST['opentime'];
 $closetime = $_POST['closetime'];
-$location = $_POST['location'];
+$iframe_string = $_POST['location'];
+
+//Extracting map link from the entered iframe link
+
+preg_match('/src="([^"]+)"/', $iframe_string, $match);
+$location = $match[1];
+
+// ***
 
 //Image upload
 $target_dir = 'uploads/inst/';
@@ -53,9 +60,9 @@ if (isset($_POST['submit'])) {
              };
             
             $sql2 = "insert into Institutions_Details_Table (Institution_Code,About,Address_Line_1,Address_Line_2,Address_Line_3,
-            Pincode,Phone,Email,Opening_Time,Closing_Time,Location,Map,Main_Img) 
+            Pincode,Phone,Email,Opening_Time,Closing_Time,Location,Main_Img) 
             values('$inst_code','$about','$address1','$address2','$address3','$pincode',
-            '$phone','$email','$opentime','$closetime','$location','$map','$target_file')";
+            '$phone','$email','$opentime','$closetime','$location','$target_file')";
             $conn->query($sql2);
             $inst_code = 0;
             echo "<script>alert('Institution Added Successfully');window.location='admin_products.php';</script>";
