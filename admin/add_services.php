@@ -50,6 +50,8 @@ if (isset($_GET['delete'])) {
 
          <input type="text" class="box" placeholder="Service Name" name="service_name" required><br><br>
 
+         <textarea id="description" class="box" placeholder="Description" name="service_desc" rows="5" cols="30"></textarea>
+
          <h2><u>Type Of Service</h2></u>
          <select name="category" class="box" placeholder="Category">
             <option value="Clinical">Clinical Service</option>
@@ -57,7 +59,10 @@ if (isset($_GET['delete'])) {
             <option value="LAB">LAB</option>
          </select>
 
-         <input type="file" class="box" name="file" id="file" required><br><br><br><br>
+         <h2><u>Icon</h2></u>
+         <input type="file" class="box" name="fileicon" id="file" required><br><br><br><br>
+         <h2><u>Image</h2></u>
+         <input type="file" class="box" name="fileimg" id="file" required><br><br><br><br>
 
          <input type="submit" value="submit" id="submit" class="btn" name="submit">
          <br><br>
@@ -82,7 +87,9 @@ if (isset($_GET['delete'])) {
                <div class="box">
                   <div class="name"><?php echo $fetch_inst['Service_Code']; ?></div>
                   <img class="img-responsive" src="<?php echo $fetch_inst['Service_Icon']; ?>" alt="" style="width: 100%; height: auto">
+                  <img class="img-responsive" src="<?php echo $fetch_inst['Service_Img']; ?>" alt="" style="width: 100%; height: auto">
                   <div class="name"><?php echo $fetch_inst['Service_Name']; ?></div>
+                  <div class="name"><?php echo $fetch_inst['Service_Desc']; ?></div>
                   <div class="name"><?php echo $fetch_inst['Category']; ?></div>
 
                   <!-- <a href="admin_update_product.php?update=<?php echo $fetch_inst['id']; ?>" class="option-btn">update</a>
