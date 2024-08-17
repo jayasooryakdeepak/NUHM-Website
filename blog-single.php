@@ -279,79 +279,34 @@
                 </tr>
               </table>
 
+            <?php
+              $select_service = mysqli_query($conn, "SELECT * FROM InstitutionServices,Services_Table WHERE 
+        $inst_code = Institution_Code and Services_Table.Service_Code = InstitutionServices.Service_Code") or die('query failed');
+
+
+
+        if (mysqli_num_rows($select_service) > 0) {
+          while ($fetch_serv = mysqli_fetch_assoc($select_service)) {
+
+            ?>
+
               <div class="about-author d-lg-flex d-md-flex d-xl-flex p-4">
                 <div class="bio mr-5">
                   <img
-                    src="images/teacher-1.jpg"
+                    src="admin/<?php echo $fetch_serv['Service_Img']; ?>"
                     alt="Image placeholder"
                     class="img-fluid mb-4" />
                 </div>
                 <div class="desc">
-                  <h3>OPD services</h3>
+                  <h3><?php echo $fetch_serv['Service_Name']; ?></h3>
                   <p>
-                    OPD stands for "Out-Patient Department". It is a term that is
-                    commonly used in the medical field to describe a department in
-                    a hospital or clinic where patients are treated on an
-                    outpatient basis.
-                  </p>
-                </div>
-              </div>
-              <div class="about-author d-lg-flex d-md-flex d-xl-flex p-4">
-                <div class="bio mr-5">
-                  <img
-                    src="images/teacher-1.jpg"
-                    alt="Image placeholder"
-                    class="img mb-4 serv-img" />
-                </div>
-                <div class="desc">
-                  <h3>OPD services</h3>
-                  <p>
-                    Treatment will be provided for all patients attending the
-                    outpatient clinics. Patients who may require care at a higher
-                    level will be identified by following the red flag signs and
-                    referred early to the appropriate level of institution. Basic
-                    diagnosis and treatment for common infections, minor injuries,
-                    and chronic conditions with referral as needed and follow up
-                    care for vector borne diseases – Malaria, Dengue, Chikungunya,
-                    Filaria, Kalazar, Japanese Encephalitis, TB and Leprosy.
-                  </p>
-                </div>
-              </div>
-              <div class="about-author d-lg-flex d-md-flex d-xl-flex p-4">
-                <div class="bio mr-5">
-                  <img
-                    src="images/teacher-1.jpg"
-                    alt="Image placeholder"
-                    class="img-fluid mb-4" />
-                </div>
-                <div class="desc">
-                  <h3>OPD services</h3>
-                  <p>
-                    OPD stands for "Out-Patient Department". It is a term that is
-                    commonly used in the medical field to describe a department in
-                    a hospital or clinic where patients are treated on an
-                    outpatient basis.
-                  </p>
-                </div>
-              </div>
-              <div class="about-author d-lg-flex d-md-flex d-xl-flex p-4">
-                <div class="bio mr-5">
-                  <img
-                    src="images/teacher-1.jpg"
-                    alt="Image placeholder"
-                    class="img-fluid mb-4" />
-                </div>
-                <div class="desc">
-                  <h3>OPD services</h3>
-                  <p>
-                    OPD stands for "Out-Patient Department". It is a term that is
-                    commonly used in the medical field to describe a department in
-                    a hospital or clinic where patients are treated on an
-                    outpatient basis.
+                  <?php echo $fetch_serv['Service_Desc']; ?>
                   </p>
                 </div>
               </div>
             </div>
+
+            <?php } } ?>
 
             <div class="col-lg-4 sidebar ftco-animate">
               <!-- Maps -->

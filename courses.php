@@ -476,3 +476,72 @@
 </body>
 
 </html>
+
+<!-- You'll need a relational database structure to represent this effectively. Here's a design using three tables:
+
+1. Institutions Table
+
+Column Name	Data Type	Description
+Institution_ID	INT	Unique identifier for each institution (Primary Key)
+Institution_Name	VARCHAR(255)	Name of the institution
+...other_institution_details	...	Other relevant information about the institution
+2. Services Table
+
+Column Name	Data Type	Description
+Service_ID	INT	Unique identifier for each service (Primary Key)
+Service_Name	VARCHAR(255)	Name of the service (e.g., "OPD Services", "Pharmacy", "Laboratory Services")
+...other_service_details	...	Other relevant information about the service
+3. InstitutionServices Table (Junction Table)
+
+Column Name	Data Type	Description
+Institution_ID	INT	Foreign Key referencing Institutions Table
+Service_ID	INT	Foreign Key referencing Services Table
+Explanation:
+
+Institutions Table: Stores basic information about each institution.
+Services Table: Stores a master list of all available services.
+InstitutionServices Table: This is the crucial table. It acts as a "many-to-many" relationship table.
+Each row in this table represents a specific service offered by a specific institution.
+Institution_ID and Service_ID together form a composite primary key, ensuring that an institution can't offer the same service multiple times.
+Example Data:
+
+Institutions Table
+
+Institution_ID	Institution_Name
+1	UPHC Kuthapady
+2	General Hospital
+3	City Clinic
+Services Table
+
+Service_ID	Service_Name
+1	OPD Services
+2	Pharmacy
+3	Laboratory Services
+4	Immunization Services
+5	Dental Clinic
+InstitutionServices Table
+
+Institution_ID	Service_ID
+1	1
+1	2
+1	3
+2	1
+2	3
+2	5
+3	2
+3	4
+How to Use:
+
+To retrieve the list of services for a particular institution (e.g., Institution_ID = 1):
+
+SELECT s.Service_Name
+FROM Services s
+JOIN InstitutionServices is ON s.Service_ID = is.Service_ID
+WHERE is.Institution_ID = 1;
+This query will return "OPD Services", "Pharmacy", and "Laboratory Services" for UPHC Kuthapady.
+
+Advantages of this Design:
+
+Scalability: You can easily add new institutions or services without modifying the existing table structure.
+Flexibility: Allows institutions to offer multiple services and services to be offered by multiple institutions.
+Data Integrity: Enforces referential integrity, ensuring that you don't have orphaned records (e.g., a service linked to a non-existent institution). -->
