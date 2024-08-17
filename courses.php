@@ -189,6 +189,7 @@
                 Thammanam which is a prominent region in Kochi, Kerala.
               </p>
               <p><a href="blog-single.html" class="btn btn-primary">Know More</a></p>
+              <p><a href="blog-single.php?inst_code=<?php echo $fetch_inst['Institution_Code']; ?>" class="btn btn-primary">Know More</a></p>
             </div>
           </div>
         <?php } ?>
