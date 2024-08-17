@@ -176,6 +176,21 @@
                 health screenings.
               </p>
 
+              <?php
+              $select_service_time = mysqli_query($conn, "SELECT * FROM InstitutionServices,Services_Table WHERE 
+        $inst_code = Institution_Code and Services_Table.Service_Code = InstitutionServices.Service_Code") or die('query failed');
+
+        if (mysqli_num_rows($select_service_time) > 0) {
+          while ($fetch_serv_time = mysqli_fetch_assoc($select_service_time)) {
+
+              $optime1 = $fetch_serv_time['Service_Time_Start'];
+              $serv_Time_1 = date('h:i A', strtotime($optime1));
+              $cltime1 = $fetch_serv_time['Service_Time_End'];
+              $serv_Time_2 = date('h:i A', strtotime($cltime1));
+              
+            ?>
+
+            
               <table>
                 <tr>
                   <th>SERVICES</th>
@@ -183,102 +198,12 @@
                   <th>TIME</th>
                 </tr>
                 <tr>
-                  <td>OPD services</td>
-                  <td>Monday to Saturday</td>
-                  <td>9am to 6pm</td>
-                </tr>
-                <tr>
-                  <td>Pharmacy</td>
-                  <td>Monday to Saturday</td>
-                  <td>9am to 6pm</td>
-                </tr>
-                <tr>
-                  <td>Laboratory services</td>
-                  <td>Monday to Saturday</td>
-                  <td>9am to 6pm</td>
-                </tr>
-                <tr>
-                  <td>Immunization services</td>
-                  <td>Every Wednesday</td>
-                  <td>9am to 1 pm</td>
-                </tr>
-                <tr>
-                  <td>Geriatric clinic</td>
-                  <td>Every Wednesday</td>
-                  <td>9am to 1 pm</td>
-                </tr>
-                <tr>
-                  <td>NCD clinic</td>
-                  <td>Every Thursday</td>
-                  <td>9am to 6pm</td>
-                </tr>
-                <tr>
-                  <td>ANC clinic</td>
-                  <td>Every Monday</td>
-                  <td>9am to 1pm</td>
-                </tr>
-                <tr>
-                  <td>Palliative homecare services</td>
-                  <td>Every Monday</td>
-                  <td>9am to 1pm</td>
-                </tr>
-                <tr>
-                  <td>SWAAS clinic</td>
-                  <td>Every Monday</td>
-                  <td>9am to 1pm</td>
-                </tr>
-                <tr>
-                  <td>ASWAAS clinic</td>
-                  <td>Every 3rd Tuesday</td>
-                  <td>11am to 1pm</td>
-                </tr>
-                <tr>
-                  <td>Optometric clinic</td>
-                  <td>Every Friday</td>
-                  <td>9am to 3pm</td>
-                </tr>
-                <tr>
-                  <td>Dental clinic</td>
-                  <td>Every Friday</td>
-                  <td>9am to 3pm</td>
-                </tr>
-                <tr>
-                  <td>ENT clinic</td>
-                  <td>Every Saturday</td>
-                  <td>10am to 1pm</td>
-                </tr>
-                <tr>
-                  <td>Orthopaedic clinic</td>
-                  <td>Every Saturday</td>
-                  <td>10am to 1pm</td>
-                </tr>
-                <tr>
-                  <td>Pediatric clinic</td>
-                  <td>Every Saturday</td>
-                  <td>10am to 1pm</td>
-                </tr>
-                <tr>
-                  <td>Adoloscent clinic</td>
-                  <td>Every Saturday</td>
-                  <td>11am to 2pm</td>
-                </tr>
-                <tr>
-                  <td>Outreach sessions</td>
-                  <td>Every Saturday</td>
-                  <td>11am to 2pm</td>
-                </tr>
-                <tr>
-                  <td>E-sanjeevani OPD</td>
-                  <td>Every Saturday</td>
-                  <td>11am to 2pm</td>
-                </tr>
-                <tr>
-                  <td>Physiotherapy services</td>
-                  <td>Every Saturday</td>
-                  <td>11am to 2pm</td>
+                  <td><?php echo $fetch_serv_time['Service_Name']; ?></td>
+                  <td><?php echo $fetch_serv_time['Service_Days']; ?></td>
+                  <td><?php echo $serv_Time_1,'-',$serv_Time_2; ?></td>
                 </tr>
               </table>
-
+              <?php } } ?>
             <?php
               $select_service = mysqli_query($conn, "SELECT * FROM InstitutionServices,Services_Table WHERE 
         $inst_code = Institution_Code and Services_Table.Service_Code = InstitutionServices.Service_Code") or die('query failed');
@@ -675,3 +600,55 @@
 </body>
 
 </html>
+
+
+<!-- I want all the services to be available at all institutions as default in the InstitutionServices table
+
+You want to populate your InstitutionServices table so that every institution offers every service by default. This is a good starting point for managing service availability. Here's how you can do it using SQL:
+
+-- Assuming your tables are named 'Institutions', 'Services', and 'InstitutionServices'
+
+INSERT INTO InstitutionServices (Institution_ID, Service_ID, Service_Time, Service_Days)
+SELECT i.Institution_ID, s.Service_ID, 'Not Available Yet', 'Not Available Yet' -- Set default values for Service_Time and Service_Days
+FROM Institutions i
+CROSS JOIN Services s;
+Explanation:
+
+INSERT INTO InstitutionServices ...: This part of the query inserts data into the InstitutionServices table.
+
+SELECT i.Institution_ID, s.Service_ID, 'Not Available Yet', 'Not Available Yet' ...: This selects the data to be inserted.
+
+i.Institution_ID and s.Service_ID will fetch all combinations of institution and service IDs.
+'Not Available Yet' sets a default value for Service_Time and Service_Days, indicating that the specific timings and days are not yet defined. You can change this default as needed.
+FROM Institutions i CROSS JOIN Services s;: This performs a CROSS JOIN between the Institutions and Services tables. A CROSS JOIN creates all possible combinations of rows from the two tables.
+
+Important Considerations:
+
+Existing Data: If your InstitutionServices table already has data, this query will add new rows, potentially creating duplicates. If you want to replace existing data, you'll need to clear the table first using TRUNCATE TABLE InstitutionServices; (be very careful with TRUNCATE as it deletes all data without the ability to rollback).
+
+Default Values: Consider what default values make sense for Service_Time and Service_Days. You might want to use placeholders like "To be determined" or leave them NULL initially.
+
+Application Logic: After running this query, you'll likely want to provide a way for administrators to update the Service_Time and Service_Days in your application to reflect the actual availability of services at each institution.
+
+Example:
+
+Let's say you have these tables:
+
+Institutions:
+
+Institution_ID	Institution_Name
+1	Hospital A
+2	Clinic B
+Services:
+
+Service_ID	Service_Name
+1	General Checkup
+2	X-ray
+After running the SQL query, your InstitutionServices table would look like this:
+
+Institution_ID	Service_ID	Service_Time	Service_Days
+1	1	Not Available Yet	Not Available Yet
+1	2	Not Available Yet	Not Available Yet
+2	1	Not Available Yet	Not Available Yet
+2	2	Not Available Yet	Not Available Yet
+Now, all institutions have all services listed, and you can update the timings and days as needed. -->
