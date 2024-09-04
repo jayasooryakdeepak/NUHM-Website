@@ -21,7 +21,7 @@ if (isset($_POST['submit'])) {
             $sql1 = "insert into PDF_Documents (Doc_Name,filename) 
             values('$doc_name','$target_file')";
             $conn->query($sql1);
-            echo "<script>alert('Events Added Successfully');window.location='add_events.php';</script>";
+            echo "<script>alert('Document Added Successfully');window.location='add_doc.php';</script>";
         }
     } else {
         // echo "<script>alert('Sorry, there was an error uploading your file.');window.location='admin_products.php';</script>";
