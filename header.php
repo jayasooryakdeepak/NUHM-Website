@@ -16,28 +16,28 @@
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a href="index.html" class="nav-link pl-0">Home</a>
+            <a href="index-1.php" class="nav-link pl-0">Home</a>
           </li>
           <li class="nav-item">
-            <a href="about.html" class="nav-link">About</a>
+            <a href="about.php" class="nav-link">About</a>
           </li>
           <li class="nav-item dropdown">
-            <a href="courses.html" class="nav-link pl-0 dropdown-toggle" data-toggle="dropdown">Institutions</a>
+            <a href="courses.php" class="nav-link pl-0 dropdown-toggle" data-toggle="dropdown">Institutions</a>
             <ul class="dropdown-menu">
-              <li><a href="courses.html" class="dropdown-item">All</a></li>
+              <li><a href="courses.php" class="dropdown-item">All</a></li>
               <li><a href="#" class="dropdown-item">UCHC</a></li>
               <li><a href="#" class="dropdown-item">UPHC's</a></li>
               <li><a href="#" class="dropdown-item">UHWC's</a></li>
             </ul>
           </li>
           <li class="nav-item">
-            <a href="teacher.html" class="nav-link">Services</a>
+            <a href="teacher.php" class="nav-link">Services</a>
           </li>
           <li class="nav-item">
-            <a href="blog.html" class="nav-link">Blog</a>
+            <a href="blog.php" class="nav-link">Events</a>
           </li>
           <li class="nav-item">
-            <a href="downloads.html" class="nav-link">Downloads</a>
+            <a href="downloads.php" class="nav-link">Downloads</a>
           </li>
           <li class="nav-item">
             <a href="contact.html" class="nav-link">Contact</a>
