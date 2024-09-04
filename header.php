@@ -15,13 +15,13 @@
       </button>
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+          <li class="nav-item <?php echo (basename($_SERVER['PHP_SELF']) == 'index-1.php') ? 'active' : ''; ?>">
             <a href="index-1.php" class="nav-link pl-0">Home</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item <?php echo (basename($_SERVER['PHP_SELF']) == 'about.php') ? 'active' : ''; ?>">
             <a href="about.php" class="nav-link">About</a>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown <?php echo (basename($_SERVER['PHP_SELF']) == 'courses.php') ? 'active' : ''; ?>">
             <a href="courses.php" class="nav-link pl-0 dropdown-toggle" data-toggle="dropdown">Institutions</a>
             <ul class="dropdown-menu">
               <li><a href="courses.php" class="dropdown-item">All</a></li>
@@ -30,16 +30,16 @@
               <li><a href="#" class="dropdown-item">UHWC's</a></li>
             </ul>
           </li>
-          <li class="nav-item">
+          <li class="nav-item <?php echo (basename($_SERVER['PHP_SELF']) == 'teacher.php') ? 'active' : ''; ?>">
             <a href="teacher.php" class="nav-link">Services</a>
           </li>
-          <li class="nav-item">
-            <a href="blog.php" class="nav-link">Events</a>
+          <li class="nav-item <?php echo (basename($_SERVER['PHP_SELF']) == 'blog.php') ? 'active' : ''; ?>">
+            <a href="blog.php" class="nav-link">Blog</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item <?php echo (basename($_SERVER['PHP_SELF']) == 'downloads.php') ? 'active' : ''; ?>">
             <a href="downloads.php" class="nav-link">Downloads</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item <?php echo (basename($_SERVER['PHP_SELF']) == 'contact.html') ? 'active' : ''; ?>">
             <a href="contact.html" class="nav-link">Contact</a>
           </li>
         </ul>
