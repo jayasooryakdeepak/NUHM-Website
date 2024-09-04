@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
             echo "<script>alert('Already Exists');window.location='admin_products.php';</script>";
         } else {
             $sql1 = "insert into PDF_Documents (Doc_Name,filename) 
-            values('$Doc_Name','$target_file')";
+            values('$doc_name','$target_file')";
             $conn->query($sql1);
             echo "<script>alert('Events Added Successfully');window.location='add_events.php';</script>";
         }

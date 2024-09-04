@@ -71,21 +71,16 @@ if (isset($_GET['delete'])) {
          ?>
                <div class="box">
                   <div class="name"><?php echo $fetch_inst['Doc_No']; ?></div>
-                  <div class="name"><?php echo $fetch_inst['Doc_Name']; ?></div>
+                  <a href="pd.php?pdfname=<?php echo $fetch_inst['filename']; ?>"><div class="name"><?php echo $fetch_inst['Doc_Name']; ?></div></a>
                   <div class="name"><?php echo $fetch_inst['filename']; ?></div>
+                  
 
                   <?php
-                  $url = $fetch_inst['filename'];
-                  $content = file_get_contents($url);
-
-                  header('Content-Type: application/pdf');
-                  header('Content-Length: ' . strlen($content));
-                  header('Content-Disposition: inline; filename="Baby Sankaranarayanan.pdf"');
-                  header('Cache-Control: private, max-age=0, must-revalidate');
-                  header('Pragma: public');
-                  ini_set('zlib.output_compression', '0');
-
-                  die($content);
+                  // $filename = "Sunday.pdf"; 
+                  // // Header 
+                  // header("Content-type: application/pdf"); header("Content-Length: " . filesize($filename)); 
+                  // // Send the file to the browser. 
+                  // readfile($filename); 
                   ?>
 
                   <!-- <a href="admin_update_product.php?update=<?php echo $fetch_inst['id']; ?>" class="option-btn">update</a>
