@@ -30,8 +30,8 @@
               <li><a href="#" class="dropdown-item">UHWC's</a></li>
             </ul>
           </li>
-          <li class="nav-item <?php echo (basename($_SERVER['PHP_SELF']) == 'teacher.php') ? 'active' : ''; ?>">
-            <a href="teacher.php" class="nav-link">Services</a>
+          <li class="nav-item <?php echo (basename($_SERVER['PHP_SELF']) == 'services.php') ? 'active' : ''; ?>">
+            <a href="services.php" class="nav-link">Services</a>
           </li>
           <li class="nav-item <?php echo (basename($_SERVER['PHP_SELF']) == 'blog.php') ? 'active' : ''; ?>">
             <a href="blog.php" class="nav-link">Blog</a>
