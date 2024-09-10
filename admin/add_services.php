@@ -55,8 +55,8 @@ if (isset($_GET['delete'])) {
          <h2><u>Type Of Service</h2></u>
          <select name="category" class="box" placeholder="Category">
             <option value="Clinical">Clinical Service</option>
-            <option value="NCD">NCD</option>
-            <option value="LAB">LAB</option>
+            <option value="Speciality Service">Speciality Service</option>
+            <option value="Outreach Service">Outreach Service</option>
          </select>
 
          <h2><u>Icon</h2></u>
