@@ -91,30 +91,35 @@
         $inst_code = Institution_Code and Services_Table.Service_Code = InstitutionServices.Service_Code") or die('query failed');
 
               if (mysqli_num_rows($select_service_time) > 0) {
-                while ($fetch_serv_time = mysqli_fetch_assoc($select_service_time)) {
-
-                  $optime1 = $fetch_serv_time['Service_Time_Start'];
-                  $serv_Time_1 = date('h:i A', strtotime($optime1));
-                  $cltime1 = $fetch_serv_time['Service_Time_End'];
-                  $serv_Time_2 = date('h:i A', strtotime($cltime1));
-
               ?>
+                <table>
+                  <tr>
+                    <th>SERVICES</th>
+                    <th>DAY</th>
+                    <th>TIME</th>
+                  </tr>
+                  <?php
+                  while ($fetch_serv_time = mysqli_fetch_assoc($select_service_time)) {
 
-
-                  <table>
-                    <tr>
-                      <th>SERVICES</th>
-                      <th>DAY</th>
-                      <th>TIME</th>
-                    </tr>
+                    $optime1 = $fetch_serv_time['Service_Time_Start'];
+                    $serv_Time_1 = date('h:i A', strtotime($optime1));
+                    $cltime1 = $fetch_serv_time['Service_Time_End'];
+                    $serv_Time_2 = date('h:i A', strtotime($cltime1));
+                  ?>
                     <tr>
                       <td><?php echo $fetch_serv_time['Service_Name']; ?></td>
                       <td><?php echo $fetch_serv_time['Service_Days']; ?></td>
                       <td><?php echo $serv_Time_1, '-', $serv_Time_2; ?></td>
                     </tr>
-                  </table>
-              <?php }
-              } ?>
+                  <?php
+                  }
+                  ?>
+                </table>
+              <?php
+              }
+              ?>
+
+
               <?php
               $select_service = mysqli_query($conn, "SELECT * FROM InstitutionServices,Services_Table WHERE 
         $inst_code = Institution_Code and Services_Table.Service_Code = InstitutionServices.Service_Code") or die('query failed');
