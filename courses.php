@@ -52,6 +52,53 @@
     </div>
   </section>
   <section class="ftco-section-tab">
+    <h1 class="tab-head">UPHC</h1>
+    <div class="container-fluid px-4">
+      <div class="row">
+        <?php
+        include('mysql_conn_1.php');
+        $select_institution = mysqli_query($conn, "SELECT * FROM Institutions_Table,Institutions_Details_Table WHERE 
+        Institutions_Table.Institution_Code = Institutions_Details_Table.Institution_Code") or die('query failed');
+
+        foreach ($select_institution as $fetch_inst) {
+
+        ?>
+          <div class="col-md-3 course ftco-animate">
+            <div
+              class="img"
+              style="background-image: url('admin/<?php echo $fetch_inst['Main_Img']; ?>')"></div>
+            <div class="text pt-4">
+
+              <?php
+              $optime = $fetch_inst['Opening_Time'];
+              $new_OP_Time_1 = date('h A', strtotime($optime));
+              $cltime = $fetch_inst['Closing_Time'];
+              $new_OP_Time_2 = date('h A', strtotime($cltime));
+              ?>
+
+              <p class="meta d-flex">
+                <span><i class="bi bi-geo-alt-fill mr-2"></i><?php echo $fetch_inst['Place']; ?></span>
+
+                <span><i class="bi bi-clock-fill mr-2"></i>
+                  <?php
+                  echo $new_OP_Time_1, "-", $new_OP_Time_2;
+                  ?> </span>
+              </p>
+              <h3><a href="#"><?php echo $fetch_inst['Institution_Name']; ?></a></h3>
+              <p>
+                Urban primary health centre Kuthapady is situated in Kuthapady near Vyttila,
+                Thammanam which is a prominent region in Kochi, Kerala.
+              </p>
+              <p><a href="blog-single.php?inst_code=<?php echo $fetch_inst['Institution_Code']; ?>" class="btn btn-primary">Know More</a></p>
+            </div>
+          </div>
+        <?php } ?>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <section class="ftco-section-tab">
     <h1 class="tab-head">UCHC</h1>
     <div class="container-fluid px-4">
       <div class="row">
@@ -89,7 +136,6 @@
                 Urban primary health centre Kuthapady is situated in Kuthapady near Vyttila,
                 Thammanam which is a prominent region in Kochi, Kerala.
               </p>
-              <p><a href="blog-single.html" class="btn btn-primary">Know More</a></p>
               <p><a href="blog-single.php?inst_code=<?php echo $fetch_inst['Institution_Code']; ?>" class="btn btn-primary">Know More</a></p>
             </div>
           </div>
@@ -98,81 +144,54 @@
     </div>
     </div>
   </section>
+
   <section class="ftco-section-tab">
-    <h1 class="tab-head">UPHC</h1>
+    <h1 class="tab-head">UHWC</h1>
     <div class="container-fluid px-4">
       <div class="row">
-        <div class="col-md-3 course ftco-animate">
-          <div
-            class="img"
-            style="background-image: url(images/ponnurunni.jpg)"></div>
-          <div class="text pt-4">
-            <p class="meta d-flex">
-              <span><i class="bi bi-geo-alt-fill mr-2"></i>Kuthapady</span>
-              <span><i class="bi bi-clock-fill mr-2"></i>9AM - 6PM </span>
-            </p>
-            <h3><a href="#">UPHC Kuthapady</a></h3>
-            <p>
-              Urban primary health centre Kuthapady is situated in Kuthapady near Vyttila,
-              Thammanam which is a prominent region in Kochi, Kerala.
-            </p>
-            <p><a href="#" class="btn btn-primary">Know More</a></p>
+        <?php
+        include('mysql_conn_1.php');
+        $select_institution = mysqli_query($conn, "SELECT * FROM Institutions_Table,Institutions_Details_Table WHERE 
+        Institutions_Table.Institution_Code = Institutions_Details_Table.Institution_Code") or die('query failed');
+
+        foreach ($select_institution as $fetch_inst) {
+
+        ?>
+          <div class="col-md-3 course ftco-animate">
+            <div
+              class="img"
+              style="background-image: url('admin/<?php echo $fetch_inst['Main_Img']; ?>')"></div>
+            <div class="text pt-4">
+
+              <?php
+              $optime = $fetch_inst['Opening_Time'];
+              $new_OP_Time_1 = date('h A', strtotime($optime));
+              $cltime = $fetch_inst['Closing_Time'];
+              $new_OP_Time_2 = date('h A', strtotime($cltime));
+              ?>
+
+              <p class="meta d-flex">
+                <span><i class="bi bi-geo-alt-fill mr-2"></i><?php echo $fetch_inst['Place']; ?></span>
+
+                <span><i class="bi bi-clock-fill mr-2"></i>
+                  <?php
+                  echo $new_OP_Time_1, "-", $new_OP_Time_2;
+                  ?> </span>
+              </p>
+              <h3><a href="#"><?php echo $fetch_inst['Institution_Name']; ?></a></h3>
+              <p>
+                Urban primary health centre Kuthapady is situated in Kuthapady near Vyttila,
+                Thammanam which is a prominent region in Kochi, Kerala.
+              </p>
+              <p><a href="blog-single.php?inst_code=<?php echo $fetch_inst['Institution_Code']; ?>" class="btn btn-primary">Know More</a></p>
+            </div>
           </div>
-        </div>
-        <div class="col-md-3 course ftco-animate">
-          <div
-            class="img"
-            style="background-image: url(images/ponnurunni.jpg)"></div>
-          <div class="text pt-4">
-            <p class="meta d-flex">
-              <span><i class="bi bi-geo-alt-fill mr-2"></i>Kuthapady</span>
-              <span><i class="bi bi-clock-fill mr-2"></i>9AM - 6PM </span>
-            </p>
-            <h3><a href="#">UPHC Kuthapady</a></h3>
-            <p>
-              Urban primary health centre Kuthapady is situated in Kuthapady near Vyttila,
-              Thammanam which is a prominent region in Kochi, Kerala.
-            </p>
-            <p><a href="#" class="btn btn-primary">Know More</a></p>
-          </div>
-        </div>
-        <div class="col-md-3 course ftco-animate">
-          <div
-            class="img"
-            style="background-image: url(images/ponnurunni.jpg)"></div>
-          <div class="text pt-4">
-            <p class="meta d-flex">
-              <span><i class="bi bi-geo-alt-fill mr-2"></i>Kuthapady</span>
-              <span><i class="bi bi-clock-fill mr-2"></i>9AM - 6PM </span>
-            </p>
-            <h3><a href="#">UPHC Kuthapady</a></h3>
-            <p>
-              Urban primary health centre Kuthapady is situated in Kuthapady near Vyttila,
-              Thammanam which is a prominent region in Kochi, Kerala.
-            </p>
-            <p><a href="#" class="btn btn-primary">Know More</a></p>
-          </div>
-        </div>
-        <div class="col-md-3 course ftco-animate">
-          <div
-            class="img"
-            style="background-image: url(images/ponnurunni.jpg)"></div>
-          <div class="text pt-4">
-            <p class="meta d-flex">
-              <span><i class="bi bi-geo-alt-fill mr-2"></i>Kuthapady</span>
-              <span><i class="bi bi-clock-fill mr-2"></i>9AM - 6PM </span>
-            </p>
-            <h3><a href="#">UPHC Kuthapady</a></h3>
-            <p>
-              Urban primary health centre Kuthapady is situated in Kuthapady near Vyttila,
-              Thammanam which is a prominent region in Kochi, Kerala.
-            </p>
-            <p><a href="#" class="btn btn-primary">Know More</a></p>
-          </div>
-        </div>
+        <?php } ?>
       </div>
     </div>
+    </div>
   </section>
+
   <footer class="ftco-footer ftco-bg-dark ftco-section">
     <div class="container">
       <div class="row mb-5">
