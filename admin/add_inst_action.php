@@ -37,7 +37,7 @@ if (isset($_POST['submit'])) {
         // $s = "select * from Product_details where productname='$prodname'";
         $rt = 2;
         if ($rt == 1) {
-            echo "<script>alert('Already Exists');window.location='admin_products.php';</script>";
+            echo "<script>alert('Already Exists');window.location='add_inst.php';</script>";
         } else {
             // $sql = "insert into Product_Details (productname,qty,unitprice,sellingprice,description,filename) 
             // values('$prodname','$quantity','$uprice','$sprice','$descp','$target_file')";
@@ -65,7 +65,7 @@ if (isset($_POST['submit'])) {
             '$phone','$email','$opentime','$closetime','$location','$target_file')";
             $conn->query($sql2);
             $inst_code = 0;
-            echo "<script>alert('Institution Added Successfully');window.location='admin_products.php';</script>";
+            echo "<script>alert('Institution Added Successfully');window.location='add_inst.php';</script>";
             
         }
     } else {

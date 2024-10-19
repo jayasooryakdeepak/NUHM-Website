@@ -97,7 +97,7 @@ if (isset($_GET['delete'])) {
 
          <input type="number" class="box" placeholder="Pincode" name="pincode" required><br><br>
 
-         <input type="number" class="box" placeholder="Phone" name="phone" required><br><br>
+         <input type="number" class="box" placeholder="Phone" name="phone"><br><br>
 
          <input type="email" class="box" placeholder="Email" name="email" required><br><br>
 
@@ -177,7 +177,7 @@ if (isset($_GET['delete'])) {
                // }
             }
          } else {
-            echo '<p class="empty">no products added yet!</p>';
+            echo '<p class="empty">no Institutions added yet!</p>';
          }
          ?>
       </div>
