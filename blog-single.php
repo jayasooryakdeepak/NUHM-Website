@@ -245,6 +245,7 @@
                   <?php echo $fetch_inst['Address_Line_1']; ?> <br />
                   <?php echo $fetch_inst['Address_Line_2']; ?><br />
                   <?php echo $fetch_inst['Address_Line_3']; ?><br />
+                  <?php echo "Pincode :- "?>
                   <?php echo $fetch_inst['Pincode']; ?><br />
                 </p>
                 <h3>Contact number</h3>
