@@ -87,8 +87,8 @@
               </p>
 
               <?php
-              $select_service_time = mysqli_query($conn, "SELECT * FROM InstitutionServices,Services_Table WHERE 
-        $inst_code = Institution_Code and Services_Table.Service_Code = InstitutionServices.Service_Code") or die('query failed');
+              $select_service_time = mysqli_query($conn, "SELECT * FROM Institution_Services,Services_Table WHERE 
+              $inst_code = Institution_Code and Services_Table.Service_Code = Institution_Services.Service_Code") or die('query failed');
 
               if (mysqli_num_rows($select_service_time) > 0) {
               ?>
@@ -121,8 +121,8 @@
 
 
               <?php
-              $select_service = mysqli_query($conn, "SELECT * FROM InstitutionServices,Services_Table WHERE 
-        $inst_code = Institution_Code and Services_Table.Service_Code = InstitutionServices.Service_Code") or die('query failed');
+              $select_service = mysqli_query($conn, "SELECT * FROM Institution_Services,Services_Table WHERE 
+              $inst_code = Institution_Code and Services_Table.Service_Code = Institution_Services.Service_Code") or die('query failed');
 
 
 
@@ -136,7 +136,7 @@
                       <img
                         src="admin/<?php echo $fetch_serv['Service_Img']; ?>"
                         alt="Image placeholder"
-                        class="img-fluid mb-4" />
+                        class="img-fluid mb-4"/>
                     </div>
                     <div class="desc">
                       <h3><?php echo $fetch_serv['Service_Name']; ?></h3>
@@ -145,120 +145,124 @@
                       </p>
                     </div>
                   </div>
+
+
+
+              <?php }
+              } ?>
             </div>
 
-        <?php }
-              } ?>
 
-        <div class="col-lg-4 sidebar ftco-animate">
-          <!-- Maps -->
-          <div class="sidebar-box ftco-animate">
-            <iframe
-              src="<?php echo $fetch_inst['Location']; ?>"
-              width="300"
-              height="250"
-              style="border: 0"
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"></iframe>
-            <!-- <img src="/images/map.png" alt="" style="width:300px;height:250px"> -->
-          </div>
-          <?php
-          $optime = $fetch_inst['Opening_Time'];
-          $new_OP_Time_1 = date('h:i A', strtotime($optime));
-          $cltime = $fetch_inst['Closing_Time'];
-          $new_OP_Time_2 = date('h:i A', strtotime($cltime));
-          ?>
-          <div class="time-tab">
-            <table>
-              <tr>
-                <th>Company</th>
-                <th>Timing</th>
-              </tr>
-              <tr>
-                <td>OP</td>
-                <td><?php echo $new_OP_Time_1, "-", $new_OP_Time_2; ?></td>
-              </tr>
-              <tr>
-                <td>LAB</td>
-                <td>8.00AM TO 3.30PM</td>
-              </tr>
-            </table>
-          </div>
 
-          <div class="time-tab">
-            <table>
-              <tr>
-                <th>HR POSITION</th>
-                <th>NUMBER</th>
-              </tr>
-              <tr>
-                <td>Medical Officers</td>
-                <td>2</td>
-              </tr>
-              <tr>
-                <td>Specialist doctors</td>
-                <td>1</td>
-              </tr>
-              <tr>
-                <td>Staff Nurse</td>
-                <td>2</td>
-              </tr>
-              <tr>
-                <td>Pharmacist</td>
-                <td>1</td>
-              </tr>
-              <tr>
-                <td>Lab Technician</td>
-                <td>1</td>
-              </tr>
-              <tr>
-                <td>JPHN</td>
-                <td>5</td>
-              </tr>
-              <tr>
-                <td>Support staff (DEO)</td>
-                <td>1</td>
-              </tr>
-              <tr>
-                <td>Cleaning staff</td>
-                <td>1</td>
-              </tr>
-              <tr>
-                <td>LHV</td>
-                <td>1</td>
-              </tr>
-              <tr>
-                <td>Palliative nurse</td>
-                <td>1</td>
-              </tr>
-            </table>
-          </div>
+            <div class="col-lg-4 sidebar ftco-animate">
+              <!-- Maps -->
+              <div class="sidebar-box ftco-animate">
+                <iframe
+                  src="<?php echo $fetch_inst['Location']; ?>"
+                  width="300"
+                  height="250"
+                  style="border: 0"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <!-- <img src="/images/map.png" alt="" style="width:300px;height:250px"> -->
+              </div>
+              <?php
+              $optime = $fetch_inst['Opening_Time'];
+              $new_OP_Time_1 = date('h:i A', strtotime($optime));
+              $cltime = $fetch_inst['Closing_Time'];
+              $new_OP_Time_2 = date('h:i A', strtotime($cltime));
+              ?>
+              <div class="time-tab">
+                <table>
+                  <tr>
+                    <th>Company</th>
+                    <th>Timing</th>
+                  </tr>
+                  <tr>
+                    <td>OP</td>
+                    <td><?php echo $new_OP_Time_1, "-", $new_OP_Time_2; ?></td>
+                  </tr>
+                  <tr>
+                    <td>LAB</td>
+                    <td>8.00AM TO 3.30PM</td>
+                  </tr>
+                </table>
+              </div>
 
-          <div class="sidebar-box ftco-animate">
-            <h3>Address</h3>
-            <p>
-              <?php echo $fetch_inst['Address_Line_1']; ?> <br />
-              <?php echo $fetch_inst['Address_Line_2']; ?><br />
-              <?php echo $fetch_inst['Address_Line_3']; ?><br />
-              <?php echo $fetch_inst['Pincode']; ?><br />
-            </p>
-            <h3>Contact number</h3>
-            <p><?php echo $fetch_inst['Phone']; ?></p>
-            <h3>Email</h3>
-            <p><?php echo $fetch_inst['Email']; ?></p>
-          </div>
+              <div class="time-tab">
+                <table>
+                  <tr>
+                    <th>HR POSITION</th>
+                    <th>NUMBER</th>
+                  </tr>
+                  <tr>
+                    <td>Medical Officers</td>
+                    <td>2</td>
+                  </tr>
+                  <tr>
+                    <td>Specialist doctors</td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>Staff Nurse</td>
+                    <td>2</td>
+                  </tr>
+                  <tr>
+                    <td>Pharmacist</td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>Lab Technician</td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>JPHN</td>
+                    <td>5</td>
+                  </tr>
+                  <tr>
+                    <td>Support staff (DEO)</td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>Cleaning staff</td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>LHV</td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>Palliative nurse</td>
+                    <td>1</td>
+                  </tr>
+                </table>
+              </div>
 
-          <div class="sidebar-box ftco-animate">
-            <h3>Paragraph</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Ducimus itaque, autem necessitatibus voluptate quod mollitia
-              delectus aut, sunt placeat nam vero culpa sapiente consectetur
-              similique, inventore eos fugit cupiditate numquam!
-            </p>
-          </div>
-        </div>
+              <div class="sidebar-box ftco-animate">
+                <h3>Address</h3>
+                <p>
+                  <?php echo $fetch_inst['Address_Line_1']; ?> <br />
+                  <?php echo $fetch_inst['Address_Line_2']; ?><br />
+                  <?php echo $fetch_inst['Address_Line_3']; ?><br />
+                  <?php echo $fetch_inst['Pincode']; ?><br />
+                </p>
+                <h3>Contact number</h3>
+                <p><?php echo $fetch_inst['Phone']; ?></p>
+                <h3>Email</h3>
+                <p><?php echo $fetch_inst['Email']; ?></p>
+              </div>
+
+              <div class="sidebar-box ftco-animate">
+                <h3>Paragraph</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Ducimus itaque, autem necessitatibus voluptate quod mollitia
+                  delectus aut, sunt placeat nam vero culpa sapiente consectetur
+                  similique, inventore eos fugit cupiditate numquam!
+                </p>
+              </div>
+            </div>
           </div>
       <?php
       // }
