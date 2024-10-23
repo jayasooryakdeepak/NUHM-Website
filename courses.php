@@ -58,7 +58,7 @@
         <?php
         include('mysql_conn_1.php');
         $select_institution = mysqli_query($conn, "SELECT * FROM Institutions_Table,Institutions_Details_Table WHERE 
-        Institutions_Table.Institution_Code = Institutions_Details_Table.Institution_Code") or die('query failed');
+        Institutions_Table.Institution_Code = Institutions_Details_Table.Institution_Code AND Category = 'UPHC'") or die('query failed');
 
         foreach ($select_institution as $fetch_inst) {
 
@@ -105,7 +105,7 @@
         <?php
         include('mysql_conn_1.php');
         $select_institution = mysqli_query($conn, "SELECT * FROM Institutions_Table,Institutions_Details_Table WHERE 
-        Institutions_Table.Institution_Code = Institutions_Details_Table.Institution_Code") or die('query failed');
+        Institutions_Table.Institution_Code = Institutions_Details_Table.Institution_Code AND Category = 'UCHC'") or die('query failed');
 
         foreach ($select_institution as $fetch_inst) {
 
@@ -152,7 +152,7 @@
         <?php
         include('mysql_conn_1.php');
         $select_institution = mysqli_query($conn, "SELECT * FROM Institutions_Table,Institutions_Details_Table WHERE 
-        Institutions_Table.Institution_Code = Institutions_Details_Table.Institution_Code") or die('query failed');
+        Institutions_Table.Institution_Code = Institutions_Details_Table.Institution_Code AND Category = 'UHWC'") or die('query failed');
 
         foreach ($select_institution as $fetch_inst) {
 
